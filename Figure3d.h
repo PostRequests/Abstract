@@ -4,15 +4,16 @@
 class Figure3d : public Figure
 {
 protected:
-	std::vector<Point> points;
+	std::vector<Point3d> points;
 public:
 	Figure& move(float x, float y, float z) override{
-		for (Point& i : points)
+		for (Point3d& i : points)
 			i.move(x, y, z);
 		return *this;
 	}
 	Figure& add(Point& p) override {
-		points.push_back(p);
+		Point3d* p3d = dynamic_cast<Point3d*>(&p);
+		points.push_back(*p3d);
 		return *this;
 	}
 	Figure& zoom_in() override{
@@ -21,7 +22,7 @@ public:
 
 	Figure& show() override {
 		std::cout << "Figure :\n";
-		for (Point& i : points)
+		for (Point3d& i : points)
 			i.show();
 		return *this;
 	}
