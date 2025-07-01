@@ -1,21 +1,44 @@
 ﻿// "Абстрактная фабрика"
 #include "AbstractFigure.h"
 #include "protoGeomObj.h"
+#include "Lib/Menu/Menu.h"
 #include <iostream>
 
 int main()
 {
-    AbstractFigure* f = new Figure2(); //Фигура 2д
-    Figure* myFigure = f->create();
-    Point* a = new Point2d();
-    Point2d fg(1, 2);
-    myFigure->add(a);
-    myFigure->add(new Point2d());
-    myFigure->add(&fg).show();
-
-    AbstractFigure* d = new Figure3(); //Фигура 3д
-    Figure* myFigure2 = d->create();
-    Point* b = new Point3d(2,3,4);
-    Point* c =  b->clone() ;
-    myFigure2->add(b).add(c).show();
+  
+    Menu menu;
+    menu.addItem("2d Фабрика", []() {
+        Box::drawFillBox(2, 10, 20, 15);
+        AbstractFigure* f = new Figure2(); //Фигура 2д
+        Figure* myFigure = f->create();
+        for (size_t i = 0; i < 4; i++)
+        {
+            Point* pp = new Point2d(rand() % 20, rand() % 20);
+            myFigure->add(pp);
+            delete pp;
+        }
+        Position showPoint(1, 10);
+        showPoint.go();
+        myFigure->show();
+        delete f;
+        delete myFigure;
+    });
+    menu.addItem("3d Фабрика", []() {
+        Box::drawFillBox(2, 10, 20, 15);
+        AbstractFigure* f = new Figure3(); //Фигура 2д
+        Figure* myFigure = f->create();
+        for (size_t i = 0; i < 4; i++)
+        {
+            Point* pp = new Point3d(rand() % 20, rand() % 20, rand() % 20);
+            myFigure->add(pp);
+            delete pp;
+        }
+        Position showPoint(1, 10);
+        showPoint.go();
+        myFigure->show();
+        delete f;
+        delete myFigure;
+        });
+    menu.run();
 }
