@@ -6,7 +6,9 @@
 class AbstractFigure
 {
 public:
+	
 	virtual Figure* create() = 0;
+	virtual ~AbstractFigure() = default;
 };
 
 class Figure2 : public AbstractFigure {
