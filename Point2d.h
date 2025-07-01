@@ -11,8 +11,8 @@ protected:
 public:
 	Point2d(float x, float y): x(x), y(y){}
 	Point2d() :x(0), y(0){}
-	Point& move(Point & p) override{
-		Point2d* p2d = dynamic_cast<Point2d*>(&p);
+	Point& move(Point * p) override{
+		Point2d* p2d = dynamic_cast<Point2d*>(p);
 		if (p2d){
 			this->x += p2d->getX();  
 			this->y += p2d->getY();
@@ -27,7 +27,9 @@ public:
 		std::cout << "Point: " << x << ", " << y << "\n";
 		return *this;
 	}
+
 	inline float getX() { return x; }
 	inline float getY() { return y; }
+	Point2d* clone() { return new Point2d(*this); }
 };
 

@@ -127,9 +127,17 @@
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Figure2d.cpp" />
     <ClCompile Include="Figure3d.cpp" />
+    <ClCompile Include="Lib\Box\Box.cpp" />
+    <ClCompile Include="Lib\Color\Color.cpp" />
+    <ClCompile Include="Lib\KeyBoard\KeyBoard.cpp" />
+    <ClCompile Include="Lib\Menu\ItemM.cpp" />
+    <ClCompile Include="Lib\Menu\Menu.cpp" />
+    <ClCompile Include="Lib\Menu\MenuItem.cpp" />
+    <ClCompile Include="Lib\Position\Position.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Point2d.cpp" />
     <ClCompile Include="Point3d.cpp" />
+    <ClCompile Include="protoGeomObj.cpp" />
     <ClCompile Include="task1.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +145,17 @@
     <ClInclude Include="Figure.h" />
     <ClInclude Include="Figure2d.h" />
     <ClInclude Include="Figure3d.h" />
+    <ClInclude Include="Lib\Box\Box.h" />
+    <ClInclude Include="Lib\Color\Color.h" />
+    <ClInclude Include="Lib\KeyBoard\KeyBoard.h" />
+    <ClInclude Include="Lib\Menu\ItemM.h" />
+    <ClInclude Include="Lib\Menu\Menu.h" />
+    <ClInclude Include="Lib\Menu\MenuItem.h" />
+    <ClInclude Include="Lib\Position\Position.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Point2d.h" />
     <ClInclude Include="Point3d.h" />
+    <ClInclude Include="protoGeomObj.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
