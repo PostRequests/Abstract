@@ -1,6 +1,7 @@
 #pragma once
 #include "Point.h"
 #include "Point3d.h"
+
 class Point2d : public Point
 {
 	float x;
