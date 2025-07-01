@@ -3,18 +3,23 @@
 #include "Point2d.h"
 class Point3d : public Point
 {
-public:
+protected:
 	float x;
 	float y;
 	float z;
 public:
 	Point3d(float x, float y, float z) : x(x), y(y), z(z) {}
 	Point3d() :x(0), y(0), z(0) {}
-	//Point3d(const Point2d& p) : x(p.getX()), y(p.getY()), z(0) {}
-	Point& move(float x, float y, float z) override {
-		this->x += x;
-		this->y += y;
-		this->z += z;
+	Point& move(Point& p) override {
+		Point3d* p3d = dynamic_cast<Point3d*>(&p);
+		if (p3d) {
+			this->x += p3d->getX();
+			this->y += p3d->getY();
+			this->z += p3d->getZ();
+		}
+		else {
+			throw std::exception("Not 3d");
+		}
 		return *this;
 	}
 

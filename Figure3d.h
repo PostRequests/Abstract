@@ -7,13 +7,18 @@ protected:
 	std::vector<Point3d> points;
 public:
 	Figure& move(float x, float y, float z) override{
+		Point3d m(x, y, z);
 		for (Point3d& i : points)
-			i.move(x, y, z);
+			i.move(m);
 		return *this;
 	}
 	Figure& add(Point& p) override {
 		Point3d* p3d = dynamic_cast<Point3d*>(&p);
-		points.push_back(*p3d);
+		if(p3d)
+			points.push_back(*p3d);
+		else {
+			throw std::exception("Not 3d");
+		}
 		return *this;
 	}
 	Figure& zoom_in() override{

@@ -2,14 +2,16 @@
 #include "Figure.h"
 #include "Point2d.h"
 #include "Point3d.h"
+#include "Point.h"
 class Figure2d : public Figure
 {
 protected:
 	std::vector<Point2d> points;
 public:
 	Figure& move(float x, float y, float z = 0) override{
+		Point2d m(x, y);
 		for (Point2d& i : points)
-			i.move(x, y);
+			i.move(m);
 		return *this;
 	}
 	Figure& zoom_in() override{
@@ -19,6 +21,9 @@ public:
 		Point2d* p2d = dynamic_cast<Point2d*>(&a);
 		if(p2d)
 			points.push_back(*p2d);
+		else {
+			throw std::exception("Not 2d");
+		}
 		return *this;
 	}
 	Figure& show() override{

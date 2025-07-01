@@ -4,15 +4,22 @@
 
 class Point2d : public Point
 {
+protected:
+
 	float x;
 	float y;
 public:
 	Point2d(float x, float y): x(x), y(y){}
 	Point2d() :x(0), y(0){}
-	//Point2d(Point3d& p): x(p.getX()), y(p.getY()){}
-	Point& move(float x, float y, float z = 0) override{
-		this->x += x;
-		this->y += y;
+	Point& move(Point & p) override{
+		Point2d* p2d = dynamic_cast<Point2d*>(&p);
+		if (p2d){
+			this->x += p2d->getX();  
+			this->y += p2d->getY();
+		}
+		else {
+			throw std::exception("Not 2d");
+		}
 		return *this;
 	}
 
